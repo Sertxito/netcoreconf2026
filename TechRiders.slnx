@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/TechRiders.AgentDemo/TechRiders.AgentDemo.csproj" />
+    <Project Path="src/TechRiders.Api/TechRiders.Api.csproj" />
+    <Project Path="src/TechRiders.AppHost/TechRiders.AppHost.csproj" />
+    <Project Path="src/TechRiders.Application/TechRiders.Application.csproj" />
+    <Project Path="src/TechRiders.CopilotBridge/TechRiders.CopilotBridge.csproj" />
+    <Project Path="src/TechRiders.Domain/TechRiders.Domain.csproj" />
+    <Project Path="src/TechRiders.Infrastructure/TechRiders.Infrastructure.csproj" />
+    <Project Path="src/TechRiders.Mcp/TechRiders.Mcp.csproj" />
+    <Project Path="src/TechRiders.ServiceDefaults/TechRiders.ServiceDefaults.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/TechRiders.Tests/TechRiders.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,65 @@
+@api = http://127.0.0.1:5101
+@token = PASTE_SHORT_LIVED_DEMO_TOKEN_FROM_START_SCRIPT
+
+### Swagger/OpenAPI real
+GET {{api}}/swagger/v1/swagger.json
+
+### Demo 1: traditional CRUD DTO
+GET {{api}}/orders?customerId=cus-contoso&status=Pending
+Authorization: Bearer {{token}}
+
+### Demo 2: intentional teaching failure — 400 INVALID_ORDER_STATUS, no write
+GET {{api}}/orders?customerId=Contoso&status=pending
+Authorization: Bearer {{token}}
+
+### Improved REST uses the same Application as MCP
+GET {{api}}/capabilities/pending-orders?customerId=cus-contoso
+Authorization: Bearer {{token}}
+
+### Evidence, permitted actions and signed review token
+GET {{api}}/capabilities/orders/ORD-1004/review-context
+Authorization: Bearer {{token}}
+
+### Default is NOT confirmed — 409, no mutation (paste real reviewToken)
+POST {{api}}/orders/ORD-1004/cancellation
+Authorization: Bearer {{token}}
+Idempotency-Key: demo:manual-001
+Content-Type: application/json
+
+{ "reviewToken": "PASTE_REVIEW_TOKEN", "confirmed": false }
+
+### Explicit confirmed write; retry identical payload/key -> alreadyApplied true
+POST {{api}}/orders/ORD-1004/cancellation
+Authorization: Bearer {{token}}
+Idempotency-Key: demo:manual-001
+Content-Type: application/json
+
+{ "reviewToken": "PASTE_REVIEW_TOKEN", "confirmed": true }
+
+### Create synthetic CRUD order; capture returned Location/ID
+POST {{api}}/orders
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "customerId": "cus-contoso", "status": "Pending", "amount": 100,
+  "priority": "Normal", "createdOn": "2026-09-15",
+  "purchaseOrderReference": "PO-MANUAL", "itemsFingerprint": "mouse:5",
+  "deliveryAddress": "Madrid"
+}
+
+### Edit only a newly created Pending order (never cancel through generic PUT)
+PUT {{api}}/orders/PASTE_CREATED_ORDER_ID
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "customerId": "cus-contoso", "status": "Pending", "amount": 110,
+  "priority": "Normal", "createdOn": "2026-09-15",
+  "purchaseOrderReference": "PO-MANUAL", "itemsFingerprint": "mouse:5",
+  "deliveryAddress": "Madrid"
+}
+
+### Remove only your newly created Pending order; seed IDs are protected
+DELETE {{api}}/orders/PASTE_CREATED_ORDER_ID
+Authorization: Bearer {{token}}

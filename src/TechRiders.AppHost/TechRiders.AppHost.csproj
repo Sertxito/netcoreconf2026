@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Sdk Name="Aspire.AppHost.Sdk" Version="13.3.5" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IsAspireHost>true</IsAspireHost>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="13.3.5" />
+    <PackageReference Include="MessagePack" Version="2.5.307" />
+    <ProjectReference Include="..\TechRiders.Api\TechRiders.Api.csproj" />
+    <ProjectReference Include="..\TechRiders.Mcp\TechRiders.Mcp.csproj" />
+    <ProjectReference Include="..\TechRiders.AgentDemo\TechRiders.AgentDemo.csproj" />
+  </ItemGroup>
+</Project>

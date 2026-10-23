@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "orders": {
+      "type": "stdio",
+      "command": "dotnet",
+      "args": [
+        "${workspaceFolder}\\src\\TechRiders.CopilotBridge\\bin\\Debug\\net10.0\\TechRiders.CopilotBridge.dll",
+        "${workspaceFolder}\\.local\\orders-session.json"
+      ]
+    }
+  }
+}

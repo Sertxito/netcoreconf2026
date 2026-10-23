@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TechRiders.Application\TechRiders.Application.csproj" />
+    <ProjectReference Include="..\TechRiders.Infrastructure\TechRiders.Infrastructure.csproj" />
+    <ProjectReference Include="..\TechRiders.ServiceDefaults\TechRiders.ServiceDefaults.csproj" />
+    <PackageReference Include="ModelContextProtocol.AspNetCore" Version="2.0.0" />
+  </ItemGroup>
+</Project>
